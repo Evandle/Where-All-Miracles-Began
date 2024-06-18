@@ -18,7 +18,7 @@ def T2S(text):
     engine.runAndWait()
     input("")
     
-# The student list for posible wife.
+# The student list for possible wife.
 students = {
     "Fuuka" : BA_Student_Data.Fuuka.name,
     "Ichika" : BA_Student_Data.Ichika.name,
