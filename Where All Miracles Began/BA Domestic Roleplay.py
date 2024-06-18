@@ -212,7 +212,7 @@ def conversation1_C():
     RandomStudent = Random_Student_Data # Transfer to a place holder for convenience.
     
     T2S(
-        f"\"{RandomStudent}? What's about her?\""
+        f"\"{RandomStudent}? What's about her?\" "
     )
     
     
