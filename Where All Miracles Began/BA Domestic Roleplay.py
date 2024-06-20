@@ -191,7 +191,7 @@ def conversation1_B():  # sourcery skip: extract-duplicate-method, remove-redund
         "I was just slacking of with Iroha\n", "What does that even mean.\n", "Yes\n", "...\n",
     1, -1, 1, 0)
     counter_All.append(counter)
-    T2S(5)
+    
     if all(choice in ("a", "c") for choice in counter_All):
         T2S(f"\"So you wont even deny these rumours huh {player}? Well at least you didn't lie to me dear.\" {maingirl} released {player} \"Well aren't you a deviant my dear.\"\n")
     elif any(choice in ("b", "d") for choice in counter_All): 
