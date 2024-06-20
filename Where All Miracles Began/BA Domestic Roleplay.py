@@ -35,7 +35,7 @@ Affection_level = 50
 def waifu():
     names_list = list(students)
     while True:
-        pick = simpledialog.askstring("Who's the lone you truly love?", f"Who's the girl you wish to settle down with?: \n{names_list}")
+        pick = simpledialog.askstring("Who's the girl you truly love?", f"Who's the girl you wish to settle down with?: \n{names_list}")
         if pick in students:
             for girl in students:
                 if pick in girl:
