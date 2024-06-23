@@ -28,7 +28,7 @@ int TextPrint(const char* Prompt, const char* Player, const char* Maingirl) {
 
 // Morning, the start of the game's story line.
 int Morning1(const char* Player, const char* Maingirl){
-    TextPrint("%s arrived home tired and weary. %s greeted %s with a smile.\n", Player, Maingirl);
+    TextPrint(" .\n", Player, Maingirl);
     
     return 0;
 }
