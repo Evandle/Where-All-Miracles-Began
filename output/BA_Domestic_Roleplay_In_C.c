@@ -54,7 +54,6 @@ int main(void){
 int Morning1(const char* Player, const char* Maingirl){
     char User_Choice = '_';
     char List_Choice[] = {'a', 'b', 'c', 'd'};
-    
     printf("%s let out an exasperated groan while stretching his arms. %s had been hard at work sorting through documents on his computer.\n\n", Player, Player);
     usleep(9000000);
     printf("\"Hey %s! Whatcha up to?\" A voice overflowing with energy and was quite loud was heard from behind %s. He looked behind to see the bright smile of %s.\n\n", Player, Player, Maingirl);
