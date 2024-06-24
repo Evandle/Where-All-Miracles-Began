@@ -2,39 +2,37 @@
 #include <ctype.h>
 #include <string.h>
 
-int isSubstring(const char* str1, const char* str2) {
-    int len1 = strlen(str1);
-    int len2 = strlen(str2);
-
-    if (len2 > len1) {
-        return 0;
-    }
-
-    for (int i = 0; i <= len1 - len2; i++) {
-        int j;
-        for (j = 0; j < len2; j++) {
-            if (str1[i + j] != str2[j]) {
-                break;
-            }
+char choice1(char* prompt, char* valid_inputs, char* outputA, char* outputB, char* outputC, char* outputD, char* User_Choice){
+    char user_input[100];
+    printf("%s\n\n: ", prompt);
+    fgets(user_input, sizeof(user_input), stdin);
+    user_input[strcspn(user_input, "\n")] = '\0';
+    if (strchr(valid_inputs, user_input[0]) != NULL) {
+        *User_Choice = user_input[0];
+        if (user_input[0] == 'a'){
+            printf("%s\n", outputA);
         }
-        if (j == len2) {
-            return 1;
+        if (user_input[0] == 'b'){
+            printf("%s\n", outputB);
         }
+        if (user_input[0] == 'c'){
+            printf("%s\n", outputC);
+        }
+        if (user_input[0] == 'd'){
+            printf("%s\n", outputD);
+        }
+        return user_input[0];
+    } else {
+        printf("Invalid input. Please try again.");
+        return '_'; // Return a default value in case of invalid input
     }
-    return 0;
 }
 
-int main(void) {
-    char FirstName[100];
-    char SecondName[100];
-    fgets(FirstName, sizeof(FirstName), stdin);
-    fgets(SecondName, sizeof(SecondName), stdin);
-    if (strcmp(FirstName, SecondName) == 0) {
-        printf("%s", FirstName);
-    } else if (isSubstring(FirstName, SecondName)) {
-        printf("different name");
-    } else {
-        printf("Error");
-    }
+int main(void){
+    char User_Choice = '_';
+    char List_Choice[] = {'a', 'b', 'c', 'd'};
+    printf("%c", choice1("a : Tell the truth. b : Lie.\nc : Yes. d : Say nothing.", List_Choice, 
+    "In my defense Lori asked for it.\n", "Wha... what are you talking about? I have no clue about that.\n", "Yes\n", "...\n", 
+    &User_Choice));
     return 0;
 }
