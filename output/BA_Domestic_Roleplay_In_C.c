@@ -12,8 +12,7 @@ void calculate_affection(int choice_affection);
 int Affection_Level = 20;
 
 // Choice maker.
-char choice1(char* prompt, char* valid_inputs, char* outputA, char* outputB, char* outputC, char* outputD, int Affection_A, int Affection_B, int Affection_C, int Affection_D)
-{
+char choice1(char* prompt, char* valid_inputs, char* outputA, char* outputB, char* outputC, char* outputD, int Affection_A, int Affection_B, int Affection_C, int Affection_D){
     char user_input[2];
     do {
         printf("%s\n\n: ", prompt);
