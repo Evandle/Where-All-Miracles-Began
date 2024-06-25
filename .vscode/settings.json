@@ -3,5 +3,8 @@
     "files.associations": {
         "stdio.h": "c",
         "ctype.h": "c"
-    }
+    },
+    "cSpell.words": [
+        "Whatcha"
+    ]
 }

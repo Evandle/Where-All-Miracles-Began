@@ -1,30 +1,91 @@
-
-#include <stdio.h>
 #include <ctype.h>
+#include <stdio.h>
 #include <string.h>
+#include <unistd.h>
 
-int main(void)
-{
-    char FirstName[100];
-    char SecondName[100];
-    printf("Name\n");
-    fgets(FirstName, sizeof(FirstName) - 1, stdin);
-    printf("Another Name\n");
-    fgets(SecondName, sizeof(SecondName) - 1, stdin);
-    FirstName[strcspn(FirstName, "\n")] = '\0';
-    SecondName[strcspn(SecondName, "\n")] = '\0';
-    if (FirstName == SecondName)
-    {
-        printf("Different");
+// Temporary functions.
+int Morning1(const char* Player, const char* Maingirl);
+char choice1(char* prompt, char* valid_inputs, char* outputA, char* outputB, char* outputC, char* outputD, int Affection_A, int Affection_B, int Affection_C, int Affection_D);
+void calculate_affection(int choice_affection, int* Affection_Level);
+
+int Affection_Level = 20;
+
+// Choice maker.
+char choice1(char* prompt, char* valid_inputs, char* outputA, char* outputB, char* outputC, char* outputD, int Affection_A, int Affection_B, int Affection_C, int Affection_D) {
+    char user_input[2];
+    do {
+        printf("%s\n\n: ", prompt);
+        if (fgets(user_input, sizeof(user_input), stdin) != NULL) {
+            user_input[strcspn(user_input, "\n")] = '\0';
+            if (strchr(valid_inputs, user_input[0]) == NULL) {
+                printf("Invalid input. Please try again.\n");
+            }
+        } else {
+            printf("Invalid input. Please try again.\n");
+        }
+    } while (strchr(valid_inputs, user_input[0]) == NULL);
+    switch (user_input[0]) {
+        case 'a':
+            printf("%s\n", outputA);
+            calculate_affection(Affection_A, &Affection_Level);
+            return 'a';
+        case 'b':
+            printf("%s\n", outputB);
+            calculate_affection(Affection_B, &Affection_Level);
+            return 'b';
+        case 'c':
+            printf("%s\n", outputC);
+            calculate_affection(Affection_C, &Affection_Level);
+            return 'c';
+        case 'd':
+            printf("%s\n", outputD);
+            calculate_affection(Affection_D, &Affection_Level);
+            return 'd';
+        default:
+            // Handle unexpected input (shouldn't happen)
+            return '?';
     }
-    else if (strcmp(FirstName, SecondName) == 0)
-    {
-        printf("%s are the same", FirstName);
-    }
-    else
-    {
-        printf("Error");
-    }
+}
+
+// Affection updater function.
+void calculate_affection(int choice_affection, int* Affection_Level) {
+    *Affection_Level += choice_affection; // Update the value pointed to by current_level
+}
+
+// The main function that calls the events and sets the timeline accordingly.
+int main(void) {
+    char Player[100];
+    char Maingirl[100];
+
+    printf("What is your name?\n: ");
+    fgets(Player, sizeof(Player) - 1, stdin);
+    Player[strcspn(Player, "\n")] = '\0';
+    printf("Who's the girl you want to settle down with?\n: ");
+    fgets(Maingirl, sizeof(Maingirl) - 1, stdin);
+    Maingirl[strcspn(Maingirl, "\n")] = '\0';
+    Morning1(Player, Maingirl);
+    printf("%d\n", Affection_Level);
     return 0;
 }
 
+// Morning, the start of the game's story line.
+int Morning1(const char* Player, const char* Maingirl) {
+    char User_Choice = '_';
+    char List_Choice[] = {'a', 'b', 'c', 'd'};
+    int Affection_NegTwo = -2;
+    int Affection_NegOne = -1;
+    int Affection_One = 1;
+    int Affection_Two = 2;
+    int Affection_Three = 3;
+    printf("%s let out an exasperated groan while stretching his arms. %s had been hard at work sorting through documents on his computer.\n\n", Player, Player);
+    usleep(9000000);
+    printf("\"Hey %s! Whatcha up to?\" A voice overflowing with energy and was quite loud was heard from behind %s. He looked behind to see the bright smile of %s.\n\n", Player, Player, Maingirl);
+    usleep(9000000);
+    printf("\"Just sorting some documents. You don't have anything to do, %s?\" %s was curios on her sudden visit.\n\n", Maingirl, Player);
+    usleep(9000000);
+    printf("\"Nope, I was kinda just wandering around thinking about what to do, and before I knew it, I'm right outside of your front door so I decided to invite myself in. I'm not bothering you, am I, %s?\" %s was as casual as ever as she explained that she just seemed to find her way here.\n\n", Player, Maingirl);
+    usleep(9000000);
+    printf("%c", choice1("a : Tell the truth. b : Lie.\nc : Yes. d : Say nothing.", List_Choice, "In my defense Lori asked for it.\n", "Wha... what are you talking about? I have no clue about that.\n", "Yes\n", "...\n", &Affection_Level, Affection_Three, Affection_NegOne, Affection_Two, Affection_NegOne));
+    usleep(9000000);
+    return 0;
+}

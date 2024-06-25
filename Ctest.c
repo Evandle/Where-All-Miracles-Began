@@ -2,11 +2,13 @@
 #include <stdio.h>
 #include <ctype.h>
 
+int Water = 20;
+
 int main(void) 
 {
-    char str[100];
+    
     printf("Give me words: ");
-    scanf("%[^\n]", str); 
-    printf("You said %s which is pretty %s cool", str, str);
+    
+    printf("You said %d which is pretty %d cool", Water, Water);
     return 0;
 }
