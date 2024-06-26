@@ -2,6 +2,18 @@
 #include <ctype.h>
 #include <string.h>
 
+typedef struct
+{
+    char name[100];
+    char school[100];
+    int age[100];
+    char gender[100];
+    char gun[100];
+}
+Student;
+
+
+
 char choice1(char* prompt, char* valid_inputs, char* outputA, char* outputB, char* outputC, char* outputD, char* User_Choice){
     char user_input[100];
     printf("%s\n\n: ", prompt);
